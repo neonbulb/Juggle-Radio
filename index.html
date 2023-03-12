@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Juggle Radio</title>
+    <meta charset="UTF-8" />
+
+    <style>
+      :root {
+        --speed: 3200ms;
+        --ballSize: 8vh;
+      }
+      .leftBall {
+        background-image: url(JugglingBall-BeachBall.png);
+        background-size: cover;
+        animation-name: leftBall;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-duration: var(--speed);
+        position: absolute;
+        border-radius: 50%;
+        width: var(--ballSize);
+        height: var(--ballSize);
+      }
+      .changeColor {
+        animation-name: changeColor;
+        animation-duration: 5s;
+      }
+      .rightBall {
+        background-image: url(JugglingBall-BeachBall.png);
+        background-size: cover;
+        animation-name: rightBall;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-duration: var(--speed);
+        position: absolute;
+        border-radius: 50%;
+        width: var(--ballSize);
+        height: var(--ballSize);
+      }
+
+      #ball1 {
+        animation-delay: 0ms;
+      }
+      #ball2 {
+        animation-delay: 400ms;
+      }
+      #ball3 {
+        animation-delay: 800ms;
+      }
+      #ball4 {
+        animation-delay: 1200ms;
+      }
+      #ball5 {
+        animation-delay: 1600ms;
+      }
+      #ball6 {
+        animation-delay: 2000ms;
+      }
+      #ball7 {
+        animation-delay: 2400ms;
+      }
+      #ball8 {
+        animation-delay: 2800ms;
+      }
+
+      @keyframes leftBall {
+        0% {
+          left: 35%;
+          top: 92%;
+        }
+        50% {
+          left: 52%;
+          top: 0;
+        }
+        100% {
+          left: 75%;
+          top: 92%;
+        }
+      }
+      @keyframes rightBall {
+        0% {
+          right: 35%;
+          top: 92%;
+        }
+        50% {
+          right: 52%;
+          top: 0;
+        }
+        100% {
+          right: 75%;
+          top: 92%;
+        }
+      }
+      @keyframes changeColor {
+        0% {
+          background-color: blue;
+        }
+        33% {
+          background-color: yellow;
+        }
+        66% {
+          background-color: orange;
+        }
+      }
+
+      #leftCannon {
+        width: 30%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      #rightCannon {
+        transform: rotateY(180deg);
+        width: 30%;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      #background {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+          0deg,
+          lightblue,
+          10%,
+          white,
+          darkblue,
+          yellow
+        );
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="background"></div>
+
+    position vs display?
+
+    <img id="leftCannon" src="Cannon.png" alt="Illustration of a cannon" />
+    <img id="rightCannon" src="Cannon.png" alt="Illustration of a cannon" />
+
+    <div>
+      <div id="ball1" class="leftBall"></div>
+      <div id="ball2" class="rightBall"></div>
+      <div id="ball3" class="leftBall"></div>
+      <div id="ball4" class="rightBall"></div>
+      <div id="ball5" class="leftBall"></div>
+      <div id="ball6" class="rightBall"></div>
+      <div id="ball7" class="leftBall"></div>
+      <div id="ball8" class="rightBall"></div>
+    </div>
+  </body>
+</html>
