@@ -15,7 +15,7 @@
         background-size: cover;
         animation-name: leftBall;
         animation-iteration-count: infinite;
-        animation-timing-function: linear;
+        animation-timing-function: cubic-bezier(0.4, 0.98, 1, 0.93);
         animation-duration: var(--speed);
         position: absolute;
         border-radius: 50%;
@@ -37,6 +37,7 @@
         border-radius: 50%;
         width: var(--ballSize);
         height: var(--ballSize);
+        z-index: 1;
       }
 
       #ball1 {
@@ -67,12 +68,13 @@
       @keyframes leftBall {
         0% {
           left: 35%;
-          /*top: calc(100% - 8vmin);*/
           top: calc(100% - 8vmin - 8vmin);
+          animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
         }
         50% {
           left: 52%;
           top: 0;
+          animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
         }
         100% {
           left: 75%;
@@ -83,10 +85,12 @@
         0% {
           right: 35%;
           top: calc(100% - 8vmin - 8vmin);
+          animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
         }
         50% {
           right: 52%;
           top: 0;
+          animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
         }
         100% {
           right: 75%;
@@ -109,37 +113,20 @@
         position: absolute;
         bottom: calc(-35vmin / 5);
         width: 35vmin;
-        /*left: 34.5%;*/
         left: 35%;
-
         transform: rotate(calc(var(--cannonAngle) * -1deg));
-        /*transform-origin: left 67.5%;*/
         transform-origin: left 60%;
-        /*
-
-
-
-
-              bottom: 0%;
-
-
-              /*transform-origin: 40% 80%;*/
       }
 
       #rightCannon {
         position: absolute;
         width: 35vmin;
         bottom: calc(-35vmin / 5);
-
         transform: rotate(calc(var(--cannonAngle) * 1deg)) translateX(-35vmin)
           rotateY(180deg);
-
         right: 35%;
-
-        /*transform: rotateZ(calc(var(--cannonAngle) * -1deg));*/
-        /*transform-origin: left 67.5%;*/
-
         transform-origin: right 60%;
+        z-index: 2;
       }
       #background {
         position: fixed;
@@ -210,12 +197,6 @@
         ></div>
       </div>
 
-      <img id="leftCloud" src="Cloud.png" alt="" />
-      <img id="leftCannon" src="Cannon.png" alt="Illustration of a cannon" />
-
-      <img id="rightCloud" src="Cloud.png" alt="" />
-      <img id="rightCannon" src="Cannon.png" alt="Illustration of a cannon" />
-
       <script>
         var r = document.querySelector(":root");
 
@@ -232,9 +213,9 @@
         <iframe
           src="https://www.youtube.com/embed/QspjKVTMlL8"
           frameborder="1px"
-          width="348px"
-          height="200px"
-          style="margin-top: 30%"
+          width="400px"
+          height="250px"
+          style="margin-top: 10vh"
         ></iframe>
       </div>
 
@@ -248,6 +229,12 @@
         <div id="ball7" class="leftBall"></div>
         <div id="ball8" class="rightBall"></div>
       </div>
+      <img id="leftCloud" src="Cloud.png" alt="" />
+      <!--left cloud-->
+      <img id="leftCannon" src="Cannon.png" alt="Illustration of a cannon" />
+      <img id="rightCloud" src="Cloud.png" alt="" />
+      <!--right cloud-->
+      <img id="rightCannon" src="Cannon.png" alt="Illustration of a cannon" />
     </div>
   </body>
 </html>
