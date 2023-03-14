@@ -6,8 +6,9 @@
 
     <style>
       :root {
+        --cannonAngle: 1;
         --speed: 3200ms;
-        --ballSize: 8vh;
+        --ballSize: 8vmin;
       }
       .leftBall {
         background-image: url(JugglingBall-BeachBall.png);
@@ -66,7 +67,7 @@
       @keyframes leftBall {
         0% {
           left: 35%;
-          top: 92%;
+          top: calc(100% - 8vmin);
         }
         50% {
           left: 52%;
@@ -74,13 +75,13 @@
         }
         100% {
           left: 75%;
-          top: 92%;
+          top: calc(100% - 8vmin);
         }
       }
       @keyframes rightBall {
         0% {
           right: 35%;
-          top: 92%;
+          top: calc(100% - 8vmin);
         }
         50% {
           right: 52%;
@@ -88,7 +89,7 @@
         }
         100% {
           right: 75%;
-          top: 92%;
+          top: calc(100% - 8vmin);
         }
       }
       @keyframes changeColor {
@@ -104,10 +105,16 @@
       }
 
       #leftCannon {
-        width: 30%;
         position: absolute;
-        top: 0;
-        left: 0;
+        bottom: 0;
+        left: 35%;
+        width: 55%;
+        bottom: 30%;
+        transform: rotate(calc(var(--cannonAngle) * -1deg));
+
+        transform-origin: 40% 80%;
+
+        /* transform-origin: left 67.5%; */
       }
       #rightCannon {
         transform: rotateY(180deg);
@@ -131,26 +138,96 @@
           yellow
         );
       }
+
+      #orangeBlock {
+        animation-name: orangeBlock;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes orangeBlock {
+        50% {
+          left: 50%;
+        }
+      }
+
+      #leftAssembly {
+        position: absolute;
+        left: 10%;
+        bottom: 0;
+      }
+      #leftCloud {
+        width: 60vmin;
+      }
+      #rightCloud {
+        width: 8vmin;
+      }
     </style>
   </head>
 
   <body>
-    <div id="background"></div>
+    <div id="background">
+      <div
+        id="orangeBlock"
+        style="
+          background-color: orange;
+          width: 200px;
+          height: 200px;
+          position: absolute;
+          left: 20%;
+        "
+      >
+        <div
+          style="
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            position: absolute;
+            left: 50%;
+          "
+        ></div>
+      </div>
 
-    position vs display?
+      <div id="leftAssembly">
+        <img id="leftCloud" src="Cloud.png" alt="" />
+        <img id="leftCannon" src="Cannon.png" alt="Illustration of a cannon" />
+      </div>
+      <div id="rightCloud"></div>
 
-    <img id="leftCannon" src="Cannon.png" alt="Illustration of a cannon" />
-    <img id="rightCannon" src="Cannon.png" alt="Illustration of a cannon" />
+      <img id="rightCannon" src="Cannon.png" alt="Illustration of a cannon" />
 
-    <div>
-      <div id="ball1" class="leftBall"></div>
-      <div id="ball2" class="rightBall"></div>
-      <div id="ball3" class="leftBall"></div>
-      <div id="ball4" class="rightBall"></div>
-      <div id="ball5" class="leftBall"></div>
-      <div id="ball6" class="rightBall"></div>
-      <div id="ball7" class="leftBall"></div>
-      <div id="ball8" class="rightBall"></div>
+      <script>
+        var r = document.querySelector(":root");
+
+        const cannonAngleRad = Math.atan(
+          window.innerHeight / (window.innerWidth * 0.17)
+        );
+        let cannonAngleDeg = cannonAngleRad * (180 / Math.PI);
+        cannonAngleDeg -= 25;
+
+        r.style.setProperty("--cannonAngle", cannonAngleDeg);
+      </script>
+
+      <div>
+        <iframe
+          src="https://www.youtube.com/embed/QspjKVTMlL8"
+          frameborder="1px"
+          width="348px"
+          height="200px"
+          style="margin-top: 30%"
+        ></iframe>
+      </div>
+
+      <div>
+        <div id="ball1" class="leftBall"></div>
+        <div id="ball2" class="rightBall"></div>
+        <div id="ball3" class="leftBall"></div>
+        <div id="ball4" class="rightBall"></div>
+        <div id="ball5" class="leftBall"></div>
+        <div id="ball6" class="rightBall"></div>
+        <div id="ball7" class="leftBall"></div>
+        <div id="ball8" class="rightBall"></div>
+      </div>
     </div>
   </body>
 </html>
