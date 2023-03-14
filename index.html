@@ -67,7 +67,8 @@
       @keyframes leftBall {
         0% {
           left: 35%;
-          top: calc(100% - 8vmin);
+          /*top: calc(100% - 8vmin);*/
+          top: calc(100% - 8vmin - 8vmin);
         }
         50% {
           left: 52%;
@@ -81,7 +82,7 @@
       @keyframes rightBall {
         0% {
           right: 35%;
-          top: calc(100% - 8vmin);
+          top: calc(100% - 8vmin - 8vmin);
         }
         50% {
           right: 52%;
@@ -106,22 +107,39 @@
 
       #leftCannon {
         position: absolute;
-        bottom: 0;
+        bottom: calc(-35vmin / 5);
+        width: 35vmin;
+        /*left: 34.5%;*/
         left: 35%;
-        width: 55%;
-        bottom: 30%;
+
         transform: rotate(calc(var(--cannonAngle) * -1deg));
+        /*transform-origin: left 67.5%;*/
+        transform-origin: left 60%;
+        /*
 
-        transform-origin: 40% 80%;
 
-        /* transform-origin: left 67.5%; */
+
+
+              bottom: 0%;
+
+
+              /*transform-origin: 40% 80%;*/
       }
+
       #rightCannon {
-        transform: rotateY(180deg);
-        width: 30%;
         position: absolute;
-        top: 0;
-        right: 0;
+        width: 35vmin;
+        bottom: calc(-35vmin / 5);
+
+        transform: rotate(calc(var(--cannonAngle) * 1deg)) translateX(-35vmin)
+          rotateY(180deg);
+
+        right: 35%;
+
+        /*transform: rotateZ(calc(var(--cannonAngle) * -1deg));*/
+        /*transform-origin: left 67.5%;*/
+
+        transform-origin: right 60%;
       }
       #background {
         position: fixed;
@@ -151,16 +169,20 @@
         }
       }
 
-      #leftAssembly {
-        position: absolute;
-        left: 10%;
-        bottom: 0;
-      }
       #leftCloud {
         width: 60vmin;
+        transform: rotateY(180deg);
+        position: absolute;
+        left: 34.5%;
+        margin-left: calc(-60vmin / 2.5);
+        bottom: 0;
       }
       #rightCloud {
-        width: 8vmin;
+        width: 60vmin;
+        position: absolute;
+        right: 34.5%;
+        margin-right: calc(-60vmin / 2.5);
+        bottom: 0;
       }
     </style>
   </head>
@@ -188,12 +210,10 @@
         ></div>
       </div>
 
-      <div id="leftAssembly">
-        <img id="leftCloud" src="Cloud.png" alt="" />
-        <img id="leftCannon" src="Cannon.png" alt="Illustration of a cannon" />
-      </div>
-      <div id="rightCloud"></div>
+      <img id="leftCloud" src="Cloud.png" alt="" />
+      <img id="leftCannon" src="Cannon.png" alt="Illustration of a cannon" />
 
+      <img id="rightCloud" src="Cloud.png" alt="" />
       <img id="rightCannon" src="Cannon.png" alt="Illustration of a cannon" />
 
       <script>
