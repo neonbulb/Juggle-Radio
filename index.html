@@ -22,10 +22,6 @@
         width: var(--ballSize);
         height: var(--ballSize);
       }
-      .changeColor {
-        animation-name: changeColor;
-        animation-duration: 5s;
-      }
       .rightBall {
         background-image: url(JugglingBall-BeachBall.png);
         background-size: cover;
@@ -75,8 +71,10 @@
           left: 52%;
           top: 0;
           animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
+          transform: rotate(-360deg);
         }
         100% {
+          transform: rotate(-1080deg);
           left: 75%;
           top: calc(100% - 8vmin);
         }
@@ -91,21 +89,12 @@
           right: 52%;
           top: 0;
           animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
+          transform: rotate(360deg);
         }
         100% {
+          transform: rotate(1080deg);
           right: 75%;
           top: calc(100% - 8vmin);
-        }
-      }
-      @keyframes changeColor {
-        0% {
-          background-color: blue;
-        }
-        33% {
-          background-color: yellow;
-        }
-        66% {
-          background-color: orange;
         }
       }
 
