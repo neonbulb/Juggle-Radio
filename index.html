@@ -4,28 +4,10 @@
     <title>Juggle Radio</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
-    <!--TODO Improvement: Make the juggling animation a fixed size. Then transform scale to 
-    a smaller size for mobile. Cannon angles will not need to be adjusted.-->
   </head>
 
   <body>
     <div id="background">
-      <script>
-        updateCannons = () => {
-          var r = document.querySelector(":root");
-
-          const cannonAngleRad = Math.atan(
-            window.innerHeight / (window.innerWidth * 0.17) /*0.17*/
-          );
-          let cannonAngleDeg = cannonAngleRad * (180 / Math.PI);
-          cannonAngleDeg -= 25;
-
-          r.style.setProperty("--cannonAngle", cannonAngleDeg);
-        };
-        updateCannons();
-        setInterval(updateCannons, 100);
-      </script>
-
       <div id="jugglingContainer">
         <div>
           <div id="ball1" class="ball leftBall"></div>
@@ -37,19 +19,27 @@
           <div id="ball7" class="ball leftBall"></div>
           <div id="ball8" class="ball rightBall"></div>
         </div>
-        <img id="leftCloud" src="img/Cloud.png" alt="Illustration of a cloud" />
+        <img
+          id="leftCloud"
+          class="cloud"
+          src="img/Cloud.png"
+          alt="Illustration of a cloud"
+        />
         <img
           id="leftCannon"
+          class="cannon"
           src="img/Cannon.png"
           alt="Illustration of a cannon"
         />
         <img
           id="rightCloud"
+          class="cloud"
           src="img/Cloud.png"
           alt="Illustration of a cloud"
         />
         <img
           id="rightCannon"
+          class="cannon"
           src="img/Cannon.png"
           alt="Illustration of a cannon"
         />

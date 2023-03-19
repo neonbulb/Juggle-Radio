@@ -1,9 +1,13 @@
-:root {
-  --cannonAngle: 1;
-  --speed: 2720;
-  --ballSize: 8vmin;
+#background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(0deg, lightblue, 10%, white, darkblue, yellow);
 }
 .ball {
+  --speed: 2720;
   background-image: url(img/JugglingBall-BeachBall.png);
   background-size: cover;
   animation-iteration-count: infinite;
@@ -44,53 +48,48 @@
 #ball8 {
   animation-delay: calc((var(--speed) / 8) * 7ms);
 }
-#leftCannon {
+.cannon {
   position: absolute;
-  bottom: calc(-35vmin / 5);
-  width: 35vmin;
-  left: 35%;
-  transform: rotate(calc(var(--cannonAngle) * -1deg));
+  bottom: -70px;
+  --cannonWidth: 350px;
+  width: var(--cannonWidth);
+}
+#leftCannon {
+  left: 220px;
+  transform: rotate(-47deg);
   transform-origin: left 60%;
 }
 #rightCannon {
-  position: absolute;
-  width: 35vmin;
-  bottom: calc(-35vmin / 5);
-  transform: rotate(calc(var(--cannonAngle) * 1deg)) translateX(-35vmin)
+  transform: rotate(47deg) translateX(calc(-1 * var(--cannonWidth)))
     rotateY(180deg);
-  right: 35%;
+  right: 220px;
   transform-origin: right 60%;
   z-index: 2;
 }
-#background {
-  position: fixed;
-  top: 0;
+.cloud {
+  width: 600px;
+  position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(0deg, lightblue, 10%, white, darkblue, yellow);
 }
 #leftCloud {
-  width: 60vmin;
   transform: rotateY(180deg);
-  position: absolute;
-  left: 34.5%;
-  margin-left: calc(-60vmin / 2.5);
-  bottom: 0;
+  left: 0;
 }
 #rightCloud {
-  width: 60vmin;
-  position: absolute;
-  right: 34.5%;
-  margin-right: calc(-60vmin / 2.5);
-  bottom: 0;
+  right: 0;
 }
 #jugglingContainer {
+  background-color: green;
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  --ballSize: 80px;
+  height: 1000px;
+  width: 1000px;
+  /* transform: scale(0.5); */
 }
 #video {
   position: absolute;
@@ -101,38 +100,39 @@
 }
 @keyframes leftBall {
   0% {
-    left: 35%;
-    top: calc(100% - 8vmin - 8vmin);
+    left: 220px;
+    top: calc(100% - var(--ballSize) * 2);
     animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
   }
   50% {
-    left: 52%; /*52*/
+    left: 53%;
     top: 0;
     animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
     transform: rotate(-360deg);
   }
   100% {
     transform: rotate(-1080deg);
-    left: 75%;
-    top: calc(100% - 8vmin);
+    left: 95%;
+
+    top: calc(100% - var(--ballSize));
   }
 }
 @keyframes rightBall {
   0% {
-    right: 35%;
-    top: calc(100% - 8vmin - 8vmin);
+    right: 220px;
+    top: calc(100% - var(--ballSize) * 2);
     animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
   }
   50% {
-    right: 52%;
+    right: 53%;
     top: 0;
     animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
     transform: rotate(360deg);
   }
   100% {
     transform: rotate(1080deg);
-    right: 75%;
-    top: calc(100% - 8vmin);
+    right: 95%;
+    top: calc(100% - var(--ballSize));
   }
 }
 @media (max-aspect-ratio: 1/1) {
