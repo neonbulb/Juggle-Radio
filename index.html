@@ -4,6 +4,9 @@
     <title>Juggle Radio</title>
     <meta charset="UTF-8" />
 
+    <!--TODO Improvement: Make the juggling animation a fixed size. Then transform scale to 
+    a smaller size for mobile. Cannon angles will not need to be adjusted.-->
+
     <style>
       :root {
         --cannonAngle: 1;
@@ -41,26 +44,26 @@
         animation-delay: 0ms;
       }
       #ball2 {
-        animation-delay: calc(calc(var(--speed) / 8) * 1ms);
+        animation-delay: calc((var(--speed) / 8) * 1ms);
       }
       #ball3 {
-        animation-delay: calc(calc(var(--speed) / 8) * 2ms);
+        animation-delay: calc((var(--speed) / 8) * 2ms);
       }
       #ball4 {
-        animation-delay: calc(calc(var(--speed) / 8) * 3ms);
+        animation-delay: calc((var(--speed) / 8) * 3ms);
       }
       #ball5 {
-        animation-delay: calc(calc(var(--speed) / 8) * 4ms);
+        animation-delay: calc((var(--speed) / 8) * 4ms);
       }
       #ball6 {
-        animation-delay: calc(calc(var(--speed) / 8) * 5ms);
+        animation-delay: calc((var(--speed) / 8) * 5ms);
       }
       #ball7 {
-        animation-delay: calc(calc(var(--speed) / 8) * 6ms);
+        animation-delay: calc((var(--speed) / 8) * 6ms);
       }
       #ball8 {
         animation-delay: calc(
-          calc(var(--speed) / 8) * 7ms
+          (var(--speed) / 8) * 7ms
         ); /*might not need calc inside calc*/
       }
 
