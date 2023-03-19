@@ -3,7 +3,7 @@
   <head>
     <title>Juggle Radio</title>
     <meta charset="UTF-8" />
-
+    <link rel="stylesheet" href="style.css" />
     <!--TODO Improvement: Make the juggling animation a fixed size. Then transform scale to 
     a smaller size for mobile. Cannon angles will not need to be adjusted.-->
 
@@ -62,9 +62,7 @@
         animation-delay: calc((var(--speed) / 8) * 6ms);
       }
       #ball8 {
-        animation-delay: calc(
-          (var(--speed) / 8) * 7ms
-        ); /*might not need calc inside calc*/
+        animation-delay: calc((var(--speed) / 8) * 7ms);
       }
 
       @keyframes leftBall {
@@ -138,19 +136,6 @@
           yellow
         );
       }
-
-      #orangeBlock {
-        animation-name: orangeBlock;
-        animation-duration: 2s;
-        animation-iteration-count: infinite;
-      }
-
-      @keyframes orangeBlock {
-        50% {
-          left: 50%;
-        }
-      }
-
       #leftCloud {
         width: 60vmin;
         transform: rotateY(180deg);
@@ -166,7 +151,6 @@
         margin-right: calc(-60vmin / 2.5);
         bottom: 0;
       }
-
       #jugglingContainer {
         position: absolute;
         top: 0;
@@ -177,8 +161,7 @@
       #video {
         position: absolute;
         top: 0.5vw;
-        left: 0.5%;
-
+        left: 0.5%; /* Should use rem?*/
         width: 30%;
         height: 30%;
       }
@@ -189,18 +172,14 @@
           left: 0;
           height: 60%;
           width: 100%;
-          /*--cannonAngle: 1;*/
-          /*Change the distance from the edge for the clouds.*/
         }
         #video {
           top: auto;
           bottom: 0.5%;
           left: 0;
-
           right: 0;
           margin-left: auto;
           margin-right: auto;
-
           height: 39.5%;
           width: 90%;
         }
@@ -210,28 +189,6 @@
 
   <body>
     <div id="background">
-      <!--
-      <div
-        id="orangeBlock"
-        style="
-          background-color: orange;
-          width: 400px;
-          height: 200px;
-          position: absolute;
-          left: 20%;
-        "
-      >
-        <div
-          style="
-            width: 50px;
-            height: 50px;
-            background-color: green;
-            position: relative;
-            right: 50%;
-          "
-        ></div>
-      </div>
--->
       <script>
         updateCannons = () => {
           var r = document.querySelector(":root");
