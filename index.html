@@ -6,185 +6,6 @@
     <link rel="stylesheet" href="style.css" />
     <!--TODO Improvement: Make the juggling animation a fixed size. Then transform scale to 
     a smaller size for mobile. Cannon angles will not need to be adjusted.-->
-
-    <style>
-      :root {
-        --cannonAngle: 1;
-        --speed: 2720;
-        --originalSpeed: 2720;
-        --ballSize: 8vmin;
-      }
-      .leftBall {
-        background-image: url(JugglingBall-BeachBall.png);
-        background-size: cover;
-        animation-name: leftBall;
-        animation-iteration-count: infinite;
-        animation-timing-function: cubic-bezier(0.4, 0.98, 1, 0.93);
-        animation-duration: calc(var(--speed) * 1ms);
-        position: absolute;
-        border-radius: 50%;
-        width: var(--ballSize);
-        height: var(--ballSize);
-      }
-      .rightBall {
-        background-image: url(JugglingBall-BeachBall.png);
-        background-size: cover;
-        animation-name: rightBall;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-        animation-duration: calc(var(--speed) * 1ms);
-        position: absolute;
-        border-radius: 50%;
-        width: var(--ballSize);
-        height: var(--ballSize);
-        z-index: 1;
-      }
-
-      #ball1 {
-        animation-delay: 0ms;
-      }
-      #ball2 {
-        animation-delay: calc((var(--speed) / 8) * 1ms);
-      }
-      #ball3 {
-        animation-delay: calc((var(--speed) / 8) * 2ms);
-      }
-      #ball4 {
-        animation-delay: calc((var(--speed) / 8) * 3ms);
-      }
-      #ball5 {
-        animation-delay: calc((var(--speed) / 8) * 4ms);
-      }
-      #ball6 {
-        animation-delay: calc((var(--speed) / 8) * 5ms);
-      }
-      #ball7 {
-        animation-delay: calc((var(--speed) / 8) * 6ms);
-      }
-      #ball8 {
-        animation-delay: calc((var(--speed) / 8) * 7ms);
-      }
-
-      @keyframes leftBall {
-        0% {
-          left: 35%;
-          top: calc(100% - 8vmin - 8vmin);
-          animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
-        }
-        50% {
-          left: 52%; /*52*/
-          top: 0;
-          animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
-          transform: rotate(-360deg);
-        }
-        100% {
-          transform: rotate(-1080deg);
-          left: 75%;
-          top: calc(100% - 8vmin);
-        }
-      }
-      @keyframes rightBall {
-        0% {
-          right: 35%;
-          top: calc(100% - 8vmin - 8vmin);
-          animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
-        }
-        50% {
-          right: 52%;
-          top: 0;
-          animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
-          transform: rotate(360deg);
-        }
-        100% {
-          transform: rotate(1080deg);
-          right: 75%;
-          top: calc(100% - 8vmin);
-        }
-      }
-
-      #leftCannon {
-        position: absolute;
-        bottom: calc(-35vmin / 5);
-        width: 35vmin;
-        left: 35%;
-        transform: rotate(calc(var(--cannonAngle) * -1deg));
-        transform-origin: left 60%;
-      }
-
-      #rightCannon {
-        position: absolute;
-        width: 35vmin;
-        bottom: calc(-35vmin / 5);
-        transform: rotate(calc(var(--cannonAngle) * 1deg)) translateX(-35vmin)
-          rotateY(180deg);
-        right: 35%;
-        transform-origin: right 60%;
-        z-index: 2;
-      }
-      #background {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(
-          0deg,
-          lightblue,
-          10%,
-          white,
-          darkblue,
-          yellow
-        );
-      }
-      #leftCloud {
-        width: 60vmin;
-        transform: rotateY(180deg);
-        position: absolute;
-        left: 34.5%;
-        margin-left: calc(-60vmin / 2.5);
-        bottom: 0;
-      }
-      #rightCloud {
-        width: 60vmin;
-        position: absolute;
-        right: 34.5%;
-        margin-right: calc(-60vmin / 2.5);
-        bottom: 0;
-      }
-      #jugglingContainer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-      }
-      #video {
-        position: absolute;
-        top: 0.5vw;
-        left: 0.5%; /* Should use rem?*/
-        width: 30%;
-        height: 30%;
-      }
-
-      @media (max-aspect-ratio: 1/1) {
-        #jugglingContainer {
-          top: 0;
-          left: 0;
-          height: 60%;
-          width: 100%;
-        }
-        #video {
-          top: auto;
-          bottom: 0.5%;
-          left: 0;
-          right: 0;
-          margin-left: auto;
-          margin-right: auto;
-          height: 39.5%;
-          width: 90%;
-        }
-      }
-    </style>
   </head>
 
   <body>
@@ -204,28 +25,6 @@
         updateCannons();
         setInterval(updateCannons, 100);
       </script>
-      <script>
-        /*
-        var r = document.querySelector(":root");
-
-        if (window.innerHeight / window.innerWidth > 1) {
-          console.log("hi");
-          let speed = r.style.getPropertyValue("speed");
-          console.log("speed", speed);
-          speed = parseInt(speed);
-          console.log("speed", speed);
-          speed = speed * (window.innerHeight / window.innerWidth) * 10;
-          console.log("speed", speed);
-          r.style.setProperty("speed", speed);
-        } else {
-          const originalSpeed = r.style.getPropertyValue("originalSpeed");
-          r.style.setProperty("--speed", originalSpeed);
-          console.log("originalSpeed", originalSpeed);
-        }
-        */
-      </script>
-
-      <!--max aspect ratio 1/2 width then height. Then you can divide to make sense of the min max divide 1 /2 = 0.5-->
 
       <div id="jugglingContainer">
         <div>
@@ -239,10 +38,9 @@
           <div id="ball8" class="rightBall"></div>
         </div>
         <img id="leftCloud" src="Cloud.png" alt="" />
-        <!--left cloud-->
         <img id="leftCannon" src="Cannon.png" alt="Illustration of a cannon" />
+
         <img id="rightCloud" src="Cloud.png" alt="" />
-        <!--right cloud-->
         <img id="rightCannon" src="Cannon.png" alt="Illustration of a cannon" />
       </div>
 
