@@ -4,7 +4,7 @@
   --ballSize: 8vmin;
 }
 .ball {
-  background-image: url(JugglingBall-BeachBall.png);
+  background-image: url(img/JugglingBall-BeachBall.png);
   background-size: cover;
   animation-iteration-count: infinite;
   animation-duration: calc(var(--speed) * 1ms);
