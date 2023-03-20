@@ -1,10 +1,16 @@
 #background {
-  position: fixed;
-  top: 0;
+  /* position: absolute; */
+  /* top: 0;
   bottom: 0;
   left: 0;
-  right: 0;
+  right: 0; */
+  height: 100vh;
+  width: 100%; /* Can take the margin off the body and then add a margin to the text below.*/
   background: linear-gradient(0deg, lightblue, 10%, white, darkblue, yellow);
+  /* z-index: -1; */
+}
+body {
+  /* height: 150vh; */
 }
 .ball {
   --speed: 2720;
@@ -50,24 +56,26 @@
 }
 .cannon {
   position: absolute;
-  bottom: -70px;
-  --cannonWidth: 350px;
+  bottom: -7%;
+  --cannonWidth: 35%;
   width: var(--cannonWidth);
 }
 #leftCannon {
-  left: 220px;
-  transform: rotate(-47deg);
+  left: var(--edgeOffset);
+  translate: -1.5%;
+  transform: rotate(-47.12deg);
   transform-origin: left 60%;
 }
 #rightCannon {
-  transform: rotate(47deg) translateX(calc(-1 * var(--cannonWidth)))
-    rotateY(180deg);
-  right: 220px;
-  transform-origin: right 60%;
+  margin-right: calc(var(--cannonWidth) * -1);
+  transform: rotateY(180deg) rotate(-47.12deg);
+  right: var(--edgeOffset);
+  translate: 1.5%;
+  transform-origin: left 60%;
   z-index: 2;
 }
 .cloud {
-  width: 600px;
+  width: 60%;
   position: absolute;
   bottom: 0;
 }
@@ -82,32 +90,26 @@
   display: flex;
   flex-wrap: wrap-reverse;
   justify-content: center;
-
-  height: 100vh;
-  width: 100vw;
 }
 
 #jugglingContainer {
-  background-color: green;
-  /* display: inline-block; */
+  /* background-color: green; */
 
   flex-grow: 1;
   position: relative;
-  /* position: relative; */
 
-  /* position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto; */
-  --ballSize: 80px;
+  --edgeOffset: 22%;
+  --ballSize: 8%;
+
+  border-left: solid calc(var(--ballSize) / 2) transparent;
+  border-right: solid calc(var(--ballSize) / 2) transparent;
+
   height: 1000px; /* 1000px */
   /* width: 1000px; */
   min-width: 1000px;
   max-width: 1000px;
-
-  /* transform: scale(0.5); */
+  /* overflow: hidden; */
+  /* transform: scale(0.4); */
 }
 #video {
   /* position: absolute; */
@@ -118,6 +120,7 @@
   height: 30%; */
 
   flex-grow: 1;
+  margin-bottom: 50vh;
   /* margin: 2rem; */
 }
 
@@ -126,7 +129,7 @@ you will not need to use scale anymore. */
 
 @keyframes leftBall {
   0% {
-    left: 220px;
+    left: var(--edgeOffset);
     top: calc(100% - var(--ballSize) * 2);
     animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
   }
@@ -138,13 +141,13 @@ you will not need to use scale anymore. */
   }
   100% {
     transform: rotate(-1080deg);
-    left: 95%;
+    left: 92%;
     top: calc(100% - var(--ballSize));
   }
 }
 @keyframes rightBall {
   0% {
-    right: 220px;
+    right: var(--edgeOffset);
     top: calc(100% - var(--ballSize) * 2);
     animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
   }
@@ -156,7 +159,7 @@ you will not need to use scale anymore. */
   }
   100% {
     transform: rotate(1080deg);
-    right: 95%;
+    right: 92%;
     top: calc(100% - var(--ballSize));
   }
 }
