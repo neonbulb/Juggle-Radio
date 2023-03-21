@@ -1,16 +1,19 @@
 #background {
-  /* position: absolute; */
-  /* top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0; */
-  height: 100vh;
-  width: 100%; /* Can take the margin off the body and then add a margin to the text below.*/
+  position: relative;
+  height: 100vmin;
+  max-height: calc(100vh - 10vh);
+  width: 100%;
   background: linear-gradient(0deg, lightblue, 10%, white, darkblue, yellow);
-  /* z-index: -1; */
 }
 body {
-  /* height: 150vh; */
+  margin: 0;
+  background-color: lightblue;
+}
+#lowerPage {
+  padding: 8px 8px 8px 8px;
+}
+#lowerVideo {
+  display: none;
 }
 .ball {
   --speed: 2720;
@@ -86,47 +89,25 @@ body {
 #rightCloud {
   right: 0;
 }
-#flexBoxContainer {
-  display: flex;
-  flex-wrap: wrap-reverse;
-  justify-content: center;
-}
-
 #jugglingContainer {
-  /* background-color: green; */
-
-  flex-grow: 1;
-  position: relative;
-
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
   --edgeOffset: 22%;
   --ballSize: 8%;
-
-  border-left: solid calc(var(--ballSize) / 2) transparent;
-  border-right: solid calc(var(--ballSize) / 2) transparent;
-
-  height: 1000px; /* 1000px */
-  /* width: 1000px; */
-  min-width: 1000px;
-  max-width: 1000px;
-  /* overflow: hidden; */
-  /* transform: scale(0.4); */
+  max-height: calc(100vh - 10vh);
+  max-width: calc(100vh - 10vh);
+  height: 100vmin;
+  width: 100vmin;
+  overflow: hidden;
 }
 #video {
-  /* position: absolute; */
-  /* top: 0.5vw; */
-  /* left: 0.5%; */ /*Should use rem?*/
-  /* display: inline-block; */
-  /* width: 30%;
-  height: 30%; */
-
-  flex-grow: 1;
-  margin-bottom: 50vh;
-  /* margin: 2rem; */
+  width: 30%;
+  height: 30%;
 }
-
-/* Could use percents for the juggling container and have the container stretch while keeping aspect ratio
-you will not need to use scale anymore. */
-
 @keyframes leftBall {
   0% {
     left: var(--edgeOffset);
@@ -134,14 +115,14 @@ you will not need to use scale anymore. */
     animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
   }
   50% {
-    left: 53%;
+    left: 54%;
     top: 0;
     animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
     transform: rotate(-360deg);
   }
   100% {
     transform: rotate(-1080deg);
-    left: 92%;
+    left: calc(100% - var(--ballSize));
     top: calc(100% - var(--ballSize));
   }
 }
@@ -152,32 +133,33 @@ you will not need to use scale anymore. */
     animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
   }
   50% {
-    right: 53%;
+    right: 54%;
     top: 0;
     animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
     transform: rotate(360deg);
   }
   100% {
     transform: rotate(1080deg);
-    right: 92%;
+    right: calc(100% - var(--ballSize));
     top: calc(100% - var(--ballSize));
   }
 }
-/* @media (max-aspect-ratio: 1/1) {
-  #jugglingContainer {
-    top: 0;
-    left: 0;
-    height: 60%;
-    width: 100%;
-  }
+#navBar {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 8px;
+  background-color: rgb(129, 199, 223);
+}
+
+@media (max-aspect-ratio: 1/1) {
   #video {
-    top: auto;
-    bottom: 0.5%;
-    left: 0;
-    right: 0;
+    display: none;
+  }
+  #lowerVideo {
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 39.5%;
-    width: 90%;
+    height: 30vh;
+    width: 100%;
   }
-} */
+}
