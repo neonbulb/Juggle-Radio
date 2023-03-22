@@ -10,7 +10,7 @@ body {
   background-color: lightblue;
 }
 #lowerPage {
-  padding: 8px 8px 8px 8px;
+  padding: 8px;
 }
 #lowerVideo {
   display: none;
@@ -106,7 +106,7 @@ body {
 }
 #video {
   width: 30%;
-  height: 30%;
+  height: 35%;
 }
 @keyframes leftBall {
   0% {
@@ -115,7 +115,7 @@ body {
     animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
   }
   50% {
-    left: 54%;
+    left: 53%;
     top: 0;
     animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
     transform: rotate(-360deg);
@@ -133,7 +133,7 @@ body {
     animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
   }
   50% {
-    right: 54%;
+    right: 53%;
     top: 0;
     animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
     transform: rotate(360deg);
@@ -150,7 +150,6 @@ body {
   margin-bottom: 8px;
   background-color: rgb(129, 199, 223);
 }
-
 @media (max-aspect-ratio: 1/1) {
   #video {
     display: none;
