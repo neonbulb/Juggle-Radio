@@ -25,6 +25,7 @@ body {
   border-radius: 50%;
   width: var(--ballSize);
   height: var(--ballSize);
+  opacity: 0;
 }
 .leftBall {
   animation-name: leftBall;
@@ -90,6 +91,10 @@ body {
   right: 0;
 }
 #jugglingContainer {
+  animation-name: zoom;
+  animation-duration: 4s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -103,6 +108,12 @@ body {
   height: 100vmin;
   width: 100vmin;
   overflow: hidden;
+  transform: scale(0.1);
+}
+@keyframes zoom {
+  100% {
+    transform: scale(1);
+  }
 }
 #video {
   width: 30%;
@@ -110,17 +121,20 @@ body {
 }
 @keyframes leftBall {
   0% {
+    opacity: 1;
     left: var(--edgeOffset);
     top: calc(100% - var(--ballSize) * 2);
     animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
   }
   50% {
+    opacity: 1;
     left: 53%;
     top: 0;
     animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
     transform: rotate(-360deg);
   }
   100% {
+    opacity: 1;
     transform: rotate(-1080deg);
     left: calc(100% - var(--ballSize));
     top: calc(100% - var(--ballSize));
@@ -128,17 +142,20 @@ body {
 }
 @keyframes rightBall {
   0% {
+    opacity: 1;
     right: var(--edgeOffset);
     top: calc(100% - var(--ballSize) * 2);
     animation-timing-function: cubic-bezier(0.55, 0.83, 0.77, 0.88);
   }
   50% {
+    opacity: 1;
     right: 53%;
     top: 0;
     animation-timing-function: cubic-bezier(0.17, 0.13, 0.6, 0.37);
     transform: rotate(360deg);
   }
   100% {
+    opacity: 1;
     transform: rotate(1080deg);
     right: calc(100% - var(--ballSize));
     top: calc(100% - var(--ballSize));
