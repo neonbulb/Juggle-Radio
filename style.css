@@ -92,9 +92,10 @@ body {
 }
 #jugglingContainer {
   animation-name: zoom;
-  animation-duration: 4s;
+  animation-duration: 5s;
   animation-delay: 1s;
   animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.83, 0.95, 0.92, 0.17);
   position: absolute;
   bottom: 0;
   right: 0;
